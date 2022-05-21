@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body bgcolor="#F5F5DC">
+
+    <header>
+        <table border="0" width="100%">
+            <th width="70%">
+
+            </th>
+            <th>
+                Пользователь:
+                {% csrf_token %}
+                <label name="label1"> {{person}} </label>
+                <a href = "{% url 'home' %}">Выйти</a>
+            </th>
+        </table>
+    </header>
+
+    <h2 align="center"><a href="/main/equipment">Оборудование</a></h2>
+    <h2 align="center"><a href="/main/plots">Участки</a></h2>
+    <h2 align="center"><a href="/main/accounting">Учёт отказа оборудования</a></h2>
+    <h2 align="center"><a href="/main/reviewing">Учёт технического осмотра оборудования</a></h2>
+    <h2 align="center"><a href="/main/users">Учёт пользователей</a></h2>
+    <h2 align="center"><a href="/main/employee">Учёт сотрудников</a></h2>
+</body>
+</html>

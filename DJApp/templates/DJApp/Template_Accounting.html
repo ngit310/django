@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Модели в Django</title>
+</head>
+
+<body class="container"  bgcolor="#F5F5DC">
+
+    <header>
+        <table border="0" width="100%">
+            <th width="70%">
+                <h1> Учёт отказа оборудования </h1>
+            </th>
+            <th>
+                Пользователь:
+                {% csrf_token %}
+                <label name="label1"> {{person}} </label>
+                <a href = "{% url 'home' %}">Выйти</a>
+            </th>
+            <th>
+                <a href = "{% url 'main' %}">Вернуться в меню</a>
+            </th>
+        </table>
+    </header>
+
+    <main>
+        <form method="POST" action="show/">
+        {% csrf_token %}
+        <table border="1" width="100%">
+            <tr align="center" bgcolor="#FFDAB9">
+                <th>Id</th>
+                <th>Дата отказа</th>
+                <th>Причина отказа</th>
+                <th>Оборудование</th>
+                <th>ФИО сотрудника</th>
+            </tr>
+        {% for i in data_show %}
+            <tr align="center">
+                <td>{{ i.id }}</td>
+                <td>{{ i.date_Accounting }}</td>
+                <td>{{ i.reason_Accounting }}</td>
+                <td> <a href="{% url 'equipment' %}"> {{ i.equipment_id }} </a> </td>
+                <td>{{ i.person_Accounting }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+        </form>
+
+        <br>
+        <table width="100%" border="0">
+
+            <th align="center" width="33%">
+                <h3> Добавление отказа </h3>
+                <form method="POST" action="add_accounting/">
+                {% csrf_token %}
+                <table>
+                    {{ form }}
+                </table>
+                <br>
+                <input type="submit" value="Добавить отказ">
+                </form>
+            </th>
+
+            <th align="center">
+                <h3> Удаление отказа </h3>
+                <form method="POST" action="del_accounting/">
+                {% csrf_token %}
+                <label>Введите id</label>
+                <input type="number" name="delname"><br>
+                <br>
+                <input type="submit" value="Удалить отказ">
+                </form>
+            </th>
+
+            <th align="center" width="33%">
+                <h3> Изменение отказа </h3>
+                <form method="POST" action="update_accounting/">
+                {% csrf_token %}
+                <label>Введите id</label>
+                <input type= "number" name="upname"><br>
+                <br>
+                <table>
+                    {{ form }}
+                </table>
+                <br>
+                <input type= "submit" value="Изменить отказ">
+                </form>
+            </th>
+
+        </table>
+
+
+
+    </main>
+</body>
+</html>

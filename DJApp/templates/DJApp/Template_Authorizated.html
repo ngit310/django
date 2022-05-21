@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body bgcolor="#F5F5DC">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3 align="center">Авторизация</h3>
+    <table align="center">
+        <th>
+            <form method="POST" action="loging/">
+                {% csrf_token %}
+            <input type="text" name="login_in" size="40">
+                <br>
+                <br>
+            <input type="text" name="password_in" size="40">
+                <br>
+                <br>
+            <input type="submit" name="go" size="40" value="Войти">
+            </form>
+        </th>
+    </table>
+
+
+</body>
+</html>

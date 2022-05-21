@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Модели в Django</title>
+</head>
+
+<body class="container"  bgcolor="#F5F5DC">
+
+    <header>
+        <table border="0" width="100%">
+            <th width="70%">
+                <h1> Учёт оборудования </h1>
+            </th>
+            <th>
+                Пользователь:
+                {% csrf_token %}
+                <label name="label1"> {{person}} </label>
+                <a href = "{% url 'home' %}">Выйти</a>
+            </th>
+            <th>
+                <a href = "{% url 'main' %}">Вернуться в меню</a>
+            </th>
+        </table>
+    </header>
+
+    <main>
+        <form method="POST" action="show/">
+        {% csrf_token %}
+        <table border="1" width="100%">
+            <tr align="center" bgcolor="#FFDAB9">
+                <th>Id</th>
+                <th>Номер пользователя</th>
+                <th>Логин пользователя</th>
+                <th>Пароль пользователя</th>
+            </tr>
+        {% for i in data_show %}
+            <tr align="center">
+                <td>{{ i.id }}</td>
+                <td>{{ i.number }}</td>
+                <td>{{ i.login }}</td>
+                <td>{{ i.password }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+        </form>
+
+        <br>
+        <table width="100%" border="0">
+
+            <th align="center" width="33%">
+                <h3> Добавление нового пользователя </h3>
+                <form method="POST" action="add_users/">
+                {% csrf_token %}
+                <table>
+                    {{ form }}
+                </table>
+                <br>
+                <input type="submit" value="Добавить пользователя">
+                </form>
+            </th>
+
+            <th align="center">
+                <h3> Удаление пользователя </h3>
+                <form method="POST" action="del_users/">
+                {% csrf_token %}
+                <label>Введите id</label>
+                <input type="number" name="delname"><br>
+                <br>
+                <input type="submit" value="Удалить пользователя">
+                </form>
+            </th>
+
+            <th align="center" width="33%">
+                <h3> Изменение пользователя </h3>
+                <form method="POST" action="update_users/">
+                {% csrf_token %}
+                <label>Введите id</label>
+                <input type= "number" name="upname"><br>
+                <br>
+                <table>
+                    {{ form }}
+                </table>
+                <br>
+                <input type= "submit" value="Изменить пользователя">
+                </form>
+            </th>
+
+        </table>
+
+
+
+    </main>
+</body>
+</html>
