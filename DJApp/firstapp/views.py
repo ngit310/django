@@ -14,7 +14,7 @@ con = pymysql.connect(host='localhost',
 auth_key = 0
 user_id = 0
 
-users_query = "SELECT firstapp_users.id, person_Employee FROM firstapp_employee_user INNER JOIN firstapp_users ON firstapp_employee_user.users_id_id = firstapp_users.id"
+users_query = "SELECT login,password FROM firstapp_users"
 
 res_users = []
 with con.cursor() as cursor:
@@ -352,7 +352,6 @@ class view_employee(View):
         if request.method == "POST":
             new_data = employee_User()
             new_data.number_Employee = request.POST.get("number_Employee")
-            new_data.users_id = Users.objects.get(id=request.POST.get("users_id"))
             new_data.position_Employee = request.POST.get("position_Employee")
             new_data.person_Employee = request.POST.get("person_Employee")
             new_data.save()
@@ -370,7 +369,6 @@ class view_employee(View):
             id_data = request.POST.get("upname", "")
             update_data = employee_User.objects.get(id=id_data)
             update_data.number_Employee = request.POST.get("number_Employee")
-            update_data.users_id = Users.objects.get(id=request.POST.get("users_id"))
             update_data.position_Employee = request.POST.get("position_Employee")
             update_data.person_Employee = request.POST.get("person_Employee")
             update_data.save()

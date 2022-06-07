@@ -4,13 +4,13 @@ import datetime
 # оборудование
 class Equipmentdb(models.Model):
     type_Equipment = models.CharField(max_length=120, blank=True)
-    number_Equipment = models.CharField(max_length=120, blank=True)
+    number_Equipment = models.IntegerField()
     name_Equipment = models.CharField(max_length=120, blank=True)
     objects = models.Manager()
 
 # участки
 class Plotsdb(models.Model):
-    number_Plots = models.CharField(max_length=120)
+    number_Plots = models.IntegerField()
     name_Plots = models.CharField(max_length=120)
     equipment_id = models.ForeignKey('Equipmentdb', on_delete=models.CASCADE)
     objects = models.Manager()
@@ -39,8 +39,7 @@ class Users(models.Model):
     objects = models.Manager()
 
 class employee_User(models.Model):
-    number_Employee = models.CharField(max_length=120)
-    users_id = models.ForeignKey('Users', on_delete=models.CASCADE)
+    number_Employee = models.IntegerField()
     position_Employee = models.CharField(max_length=120)
     person_Employee = models.CharField(max_length=120)
     objects = models.Manager()

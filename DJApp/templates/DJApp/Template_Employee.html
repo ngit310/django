@@ -32,7 +32,6 @@
             <tr align="center" bgcolor="#FFDAB9">
                 <th>Id</th>
                 <th>Номер сотрудника</th>
-                <th>ID пользователя</th>
                 <th>Должность сотрудника</th>
                 <th>ФИО сотрудника</th>
             </tr>
@@ -40,7 +39,6 @@
             <tr align="center">
                 <td>{{ i.id }}</td>
                 <td>{{ i.number_Employee }}</td>
-                <td> <a href="{% url 'users' %}"> {{ i.users_id }} </a> </td>
                 <td>{{ i.position_Employee }}</td>
                 <td>{{ i.person_Employee }}</td>
             </tr>

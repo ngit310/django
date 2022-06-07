@@ -3,11 +3,11 @@ from .models import Equipmentdb, Plotsdb, Accountingdb, Reviewingdb, Users, empl
 
 class AddEquipment(forms.Form):
     type_Equipment = forms.CharField(label="Тип оборудования")
-    number_Equipment = forms.CharField(label="Номер оборудования")
+    number_Equipment = forms.IntegerField(label="Номер оборудования")
     name_Equipment = forms.CharField(label="Название оборудования")
 
 class AddPlots(forms.Form):
-    number_Plots = forms.CharField(label="Номер участка")
+    number_Plots = forms.IntegerField(label="Номер участка")
     name_Plots = forms.CharField(label="Название участка")
     equipment_id = forms.ModelChoiceField(label="Оборудование", queryset=Equipmentdb.objects.all().order_by('id'))
 
@@ -30,7 +30,6 @@ class AddUsers(forms.Form):
     password = forms.CharField(label="Пароль пользователя")
 
 class AddEmployee(forms.Form):
-    number_Employee = forms.CharField(label="Номер сотрудника")
-    users_id = forms.ModelChoiceField(label="Пользователь", queryset=Users.objects.all().order_by('id'))
+    number_Employee = forms.IntegerField(label="Номер сотрудника")
     position_Employee = forms.CharField(label="Должность сотрудника")
     person_Employee = forms.CharField(label="ФИО сотрудника")
